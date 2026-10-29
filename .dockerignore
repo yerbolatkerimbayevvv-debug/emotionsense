@@ -1,0 +1,11 @@
+.git
+.github
+bin
+coverage.out
+*.md
+!ml-service/README.md
+.env
+.env.*
+ml-service/.venv
+ml-service/__pycache__
+docs/*.png

@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package emotion.v1;
+
+option go_package = "github.com/yerbolat/emotionsense/gen/emotion/v1;emotionv1";
+
+// EmotionService распознаёт эмоции на изображении лица.
+service EmotionService {
+  // Analyze принимает изображение и возвращает распределение эмоций.
+  rpc Analyze(AnalyzeRequest) returns (AnalyzeResponse);
+  // Health проверяет готовность модели.
+  rpc Health(HealthRequest) returns (HealthResponse);
+}
+
+message AnalyzeRequest {
+  // Байты изображения (JPEG или PNG).
+  bytes image = 1;
+  // Идентификатор запроса для трассировки в логах.
+  string request_id = 2;
+}
+
+message EmotionScore {
+  // Название эмоции: happy, sad, angry, surprise, fear, disgust, neutral.
+  string emotion = 1;
+  // Вероятность от 0 до 1.
+  float score = 2;
+}
+
+message AnalyzeResponse {
+  // Найдено ли лицо на изображении.
+  bool face_detected = 1;
+  // Доминирующая эмоция.
+  string dominant = 2;
+  // Полное распределение по эмоциям.
+  repeated EmotionScore scores = 3;
+  // Время инференса в миллисекундах.
+  int64 inference_ms = 4;
+}
+
+message HealthRequest {}
+
+message HealthResponse {
+  bool ready = 1;
+  string model = 2;
+}

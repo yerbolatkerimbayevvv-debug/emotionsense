@@ -1,0 +1,25 @@
+# Go
+bin/
+coverage.out
+*.test
+*.out
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Python (ml-service)
+__pycache__/
+*.pyc
+.venv/
+ml-service/emotion_pb2.py
+ml-service/emotion_pb2_grpc.py
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Docker volumes (если маппятся в каталог)
+data/

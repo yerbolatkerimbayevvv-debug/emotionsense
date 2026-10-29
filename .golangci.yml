@@ -1,0 +1,39 @@
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - staticcheck
+    - unused
+    - gosimple
+    - ineffassign
+    - gofmt
+    - goimports
+    - misspell
+    - revive
+    - gosec
+    - bodyclose
+    - errorlint
+    - nilerr
+    - unconvert
+    - prealloc
+
+linters-settings:
+  goimports:
+    local-prefixes: github.com/yerbolat/emotionsense
+  revive:
+    rules:
+      - name: exported
+        disabled: true
+  gosec:
+    excludes:
+      - G404 # math/rand допустим вне криптографии
+
+issues:
+  exclude-dirs:
+    - gen
+  exclude-rules:
+    - path: _test\.go
+      linters: [gosec, errcheck, bodyclose]

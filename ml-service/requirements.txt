@@ -1,0 +1,9 @@
+grpcio==1.71.0
+grpcio-tools==1.71.0
+grpcio-health-checking==1.71.0
+protobuf==5.29.3
+numpy==1.26.4
+opencv-python-headless==4.10.0.84
+tf-keras==2.18.0
+tensorflow-cpu==2.18.0
+deepface==0.0.93

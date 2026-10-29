@@ -1,0 +1,358 @@
+openapi: 3.0.3
+info:
+  title: EmotionSense API
+  version: 1.0.0
+  description: |
+    Асинхронный сервис распознавания эмоций по фото лица.
+
+    Поток работы:
+    1. `POST /auth/register` или `POST /auth/login` → получить `access_token`.
+    2. `POST /analyses` с изображением → `202 Accepted` и `id`.
+    3. Опрашивать `GET /analyses/{id}`, пока `status` не станет `done` или `failed`.
+servers:
+  - url: /api/v1
+tags:
+  - name: auth
+  - name: analyses
+  - name: stats
+  - name: admin
+  - name: system
+
+paths:
+  /auth/register:
+    post:
+      tags: [auth]
+      summary: Регистрация
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/RegisterRequest' }
+      responses:
+        '201':
+          description: Пользователь создан
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user: { $ref: '#/components/schemas/User' }
+                  tokens: { $ref: '#/components/schemas/TokenPair' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '409': { $ref: '#/components/responses/Conflict' }
+        '429': { $ref: '#/components/responses/TooMany' }
+
+  /auth/login:
+    post:
+      tags: [auth]
+      summary: Вход
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LoginRequest' }
+      responses:
+        '200':
+          description: Пара токенов
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TokenPair' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /auth/refresh:
+    post:
+      tags: [auth]
+      summary: Обновить токены (ротация refresh-токена)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refresh_token]
+              properties:
+                refresh_token: { type: string }
+      responses:
+        '200':
+          description: Новая пара токенов
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TokenPair' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /auth/logout:
+    post:
+      tags: [auth]
+      summary: Отозвать все refresh-токены пользователя
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Выход выполнен }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /auth/me:
+    get:
+      tags: [auth]
+      summary: Текущий пользователь
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Профиль
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/User' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /analyses:
+    post:
+      tags: [analyses]
+      summary: Загрузить изображение на анализ
+      description: Принимает JPEG/PNG до 10 МБ. Обработка асинхронная.
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [image]
+              properties:
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '202':
+          description: Принято в обработку
+          headers:
+            Location:
+              schema: { type: string }
+              description: URL для опроса статуса
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: { type: string, format: uuid }
+                  status: { type: string, example: pending }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/TooMany' }
+        '503': { $ref: '#/components/responses/Unavailable' }
+    get:
+      tags: [analyses]
+      summary: История анализов пользователя
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: page, in: query, schema: { type: integer, minimum: 1, default: 1 } }
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 } }
+      responses:
+        '200':
+          description: Страница анализов
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: '#/components/schemas/Analysis' }
+                  page: { type: integer }
+                  limit: { type: integer }
+                  total: { type: integer }
+
+  /analyses/{id}:
+    parameters:
+      - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      tags: [analyses]
+      summary: Статус и результат анализа
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Анализ
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Analysis' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    delete:
+      tags: [analyses]
+      summary: Удалить анализ и изображение
+      security: [{ bearerAuth: [] }]
+      responses:
+        '204': { description: Удалено }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /stats/me:
+    get:
+      tags: [stats]
+      summary: Распределение эмоций пользователя за период
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: days, in: query, schema: { type: integer, minimum: 1, maximum: 365, default: 7 } }
+      responses:
+        '200':
+          description: Статистика
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Stats' }
+
+  /admin/stats:
+    get:
+      tags: [admin]
+      summary: Глобальная статистика (только admin)
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Статистика
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminStats' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+
+  /admin/users:
+    get:
+      tags: [admin]
+      summary: Список пользователей (только admin)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: page, in: query, schema: { type: integer, default: 1 } }
+        - { name: limit, in: query, schema: { type: integer, default: 20 } }
+      responses:
+        '200':
+          description: Страница пользователей
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: '#/components/schemas/User' }
+                  page: { type: integer }
+                  limit: { type: integer }
+                  total: { type: integer }
+        '403': { $ref: '#/components/responses/Forbidden' }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    BadRequest:
+      description: Ошибка валидации
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    Unauthorized:
+      description: Нет или невалидный токен
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    Forbidden:
+      description: Недостаточно прав
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    NotFound:
+      description: Не найдено
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    Conflict:
+      description: Конфликт (например, email занят)
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    TooMany:
+      description: Превышен лимит запросов
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    Unavailable:
+      description: Зависимость недоступна
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        code: { type: string, example: INVALID_INPUT }
+        message: { type: string }
+        details:
+          type: object
+          additionalProperties: true
+    RegisterRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email: { type: string, format: email }
+        password: { type: string, minLength: 8, maxLength: 72 }
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email: { type: string, format: email }
+        password: { type: string }
+    TokenPair:
+      type: object
+      properties:
+        access_token: { type: string }
+        refresh_token: { type: string }
+        expires_in: { type: integer, description: Секунды до истечения access-токена }
+        token_type: { type: string, example: Bearer }
+    User:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        email: { type: string }
+        role: { type: string, enum: [user, admin] }
+        created_at: { type: string, format: date-time }
+    EmotionScore:
+      type: object
+      properties:
+        emotion: { type: string, example: happy }
+        score: { type: number, format: double, example: 0.87 }
+    Analysis:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        status: { type: string, enum: [pending, processing, done, failed] }
+        face_detected: { type: boolean, nullable: true }
+        dominant: { type: string, nullable: true, example: happy }
+        scores:
+          type: array
+          items: { $ref: '#/components/schemas/EmotionScore' }
+        error: { type: string, nullable: true }
+        attempts: { type: integer }
+        created_at: { type: string, format: date-time }
+        finished_at: { type: string, format: date-time, nullable: true }
+    EmotionStat:
+      type: object
+      properties:
+        emotion: { type: string }
+        count: { type: integer }
+        share: { type: number, format: double }
+    Stats:
+      type: object
+      properties:
+        days: { type: integer }
+        total: { type: integer }
+        emotions:
+          type: array
+          items: { $ref: '#/components/schemas/EmotionStat' }
+    AdminStats:
+      type: object
+      properties:
+        users: { type: integer }
+        analyses: { type: integer }
+        done: { type: integer }
+        failed: { type: integer }
+        pending: { type: integer }
+        top_emotions:
+          type: array
+          items: { $ref: '#/components/schemas/EmotionStat' }
+        generated_at: { type: string, format: date-time }

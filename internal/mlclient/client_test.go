@@ -14,7 +14,7 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/grpc/test/bufconn"
 
-	emotionv1 "github.com/yerbolat/emotionsense/gen/emotion/v1"
+	emotionv1 "github.com/yerbolatkerimbayevvv-debug/emotionsense/gen/emotion/v1"
 )
 
 // fakeServer — gRPC-сервер в памяти, имитирующий Python ML-сервис.

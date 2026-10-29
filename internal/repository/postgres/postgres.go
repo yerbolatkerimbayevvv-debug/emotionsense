@@ -14,7 +14,7 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"github.com/yerbolat/emotionsense/internal/config"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/config"
 )
 
 // ErrNotFound возвращается, когда запись отсутствует.

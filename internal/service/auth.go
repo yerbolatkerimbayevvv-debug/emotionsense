@@ -9,11 +9,11 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/yerbolat/emotionsense/internal/apperror"
-	"github.com/yerbolat/emotionsense/internal/domain"
-	"github.com/yerbolat/emotionsense/internal/dto"
-	"github.com/yerbolat/emotionsense/internal/repository/postgres"
-	"github.com/yerbolat/emotionsense/pkg/hash"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/apperror"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/dto"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/repository/postgres"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/pkg/hash"
 )
 
 // AuthService — регистрация, вход, обновление и отзыв токенов.

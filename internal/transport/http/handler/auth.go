@@ -12,10 +12,10 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
 
-	"github.com/yerbolat/emotionsense/internal/apperror"
-	"github.com/yerbolat/emotionsense/internal/domain"
-	"github.com/yerbolat/emotionsense/internal/dto"
-	"github.com/yerbolat/emotionsense/internal/transport/http/middleware"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/apperror"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/dto"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/transport/http/middleware"
 )
 
 // AuthUsecase — что хендлеру нужно от сервиса аутентификации.

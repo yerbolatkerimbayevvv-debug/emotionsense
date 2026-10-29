@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package emotion.v1;
 
-option go_package = "github.com/yerbolat/emotionsense/gen/emotion/v1;emotionv1";
+option go_package = "github.com/yerbolatkerimbayevvv-debug/emotionsense/gen/emotion/v1;emotionv1";
 
 // EmotionService распознаёт эмоции на изображении лица.
 service EmotionService {

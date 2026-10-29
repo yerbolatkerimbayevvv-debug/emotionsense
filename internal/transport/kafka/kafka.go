@@ -18,8 +18,8 @@ import (
 
 	kgo "github.com/segmentio/kafka-go"
 
-	"github.com/yerbolat/emotionsense/internal/config"
-	"github.com/yerbolat/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/config"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
 )
 
 // EnsureTopics создаёт топики, если их ещё нет (удобно для dev-окружения;

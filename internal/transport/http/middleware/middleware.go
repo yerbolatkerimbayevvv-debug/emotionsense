@@ -14,11 +14,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	"github.com/yerbolat/emotionsense/internal/apperror"
-	"github.com/yerbolat/emotionsense/internal/domain"
-	"github.com/yerbolat/emotionsense/internal/dto"
-	"github.com/yerbolat/emotionsense/internal/logger"
-	"github.com/yerbolat/emotionsense/pkg/jwt"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/apperror"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/dto"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/logger"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/pkg/jwt"
 )
 
 const (

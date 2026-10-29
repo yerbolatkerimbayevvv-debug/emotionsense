@@ -16,17 +16,17 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/yerbolat/emotionsense/internal/config"
-	"github.com/yerbolat/emotionsense/internal/logger"
-	pgrepo "github.com/yerbolat/emotionsense/internal/repository/postgres"
-	redisrepo "github.com/yerbolat/emotionsense/internal/repository/redis"
-	"github.com/yerbolat/emotionsense/internal/service"
-	miniostore "github.com/yerbolat/emotionsense/internal/storage/minio"
-	httptransport "github.com/yerbolat/emotionsense/internal/transport/http"
-	"github.com/yerbolat/emotionsense/internal/transport/http/handler"
-	"github.com/yerbolat/emotionsense/internal/transport/kafka"
-	"github.com/yerbolat/emotionsense/migrations"
-	"github.com/yerbolat/emotionsense/pkg/jwt"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/config"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/logger"
+	pgrepo "github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/repository/postgres"
+	redisrepo "github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/repository/redis"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/service"
+	miniostore "github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/storage/minio"
+	httptransport "github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/transport/http"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/transport/http/handler"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/transport/kafka"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/migrations"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/pkg/jwt"
 )
 
 func main() {

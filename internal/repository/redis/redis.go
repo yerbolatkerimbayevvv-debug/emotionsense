@@ -14,8 +14,8 @@ import (
 
 	goredis "github.com/redis/go-redis/v9"
 
-	"github.com/yerbolat/emotionsense/internal/config"
-	"github.com/yerbolat/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/config"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
 )
 
 // ErrCacheMiss — ключ отсутствует.

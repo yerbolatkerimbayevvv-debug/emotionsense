@@ -10,8 +10,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/yerbolat/emotionsense/internal/domain"
-	"github.com/yerbolat/emotionsense/internal/mlclient"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/mlclient"
 )
 
 type processorFixture struct {

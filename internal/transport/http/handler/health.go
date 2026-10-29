@@ -7,7 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/yerbolat/emotionsense/internal/dto"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/dto"
 )
 
 // Pinger — зависимость, умеющая проверять своё здоровье.

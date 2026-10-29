@@ -7,8 +7,8 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/yerbolat/emotionsense/internal/domain"
-	"github.com/yerbolat/emotionsense/internal/mlclient"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/mlclient"
 )
 
 // Processor — обработка события из очереди (сторона worker).

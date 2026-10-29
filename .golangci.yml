@@ -22,7 +22,7 @@ linters:
 
 linters-settings:
   goimports:
-    local-prefixes: github.com/yerbolat/emotionsense
+    local-prefixes: github.com/yerbolatkerimbayevvv-debug/emotionsense
   revive:
     rules:
       - name: exported

@@ -7,11 +7,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/yerbolat/emotionsense/docs"
-	"github.com/yerbolat/emotionsense/internal/config"
-	"github.com/yerbolat/emotionsense/internal/domain"
-	"github.com/yerbolat/emotionsense/internal/transport/http/handler"
-	"github.com/yerbolat/emotionsense/internal/transport/http/middleware"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/docs"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/config"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/transport/http/handler"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/transport/http/middleware"
 )
 
 // Deps — всё, что нужно роутеру.

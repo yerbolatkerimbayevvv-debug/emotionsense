@@ -15,15 +15,15 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/yerbolat/emotionsense/internal/config"
-	"github.com/yerbolat/emotionsense/internal/logger"
-	"github.com/yerbolat/emotionsense/internal/mlclient"
-	pgrepo "github.com/yerbolat/emotionsense/internal/repository/postgres"
-	redisrepo "github.com/yerbolat/emotionsense/internal/repository/redis"
-	"github.com/yerbolat/emotionsense/internal/service"
-	miniostore "github.com/yerbolat/emotionsense/internal/storage/minio"
-	"github.com/yerbolat/emotionsense/internal/transport/kafka"
-	"github.com/yerbolat/emotionsense/migrations"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/config"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/logger"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/mlclient"
+	pgrepo "github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/repository/postgres"
+	redisrepo "github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/repository/redis"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/service"
+	miniostore "github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/storage/minio"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/transport/kafka"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/migrations"
 )
 
 func main() {

@@ -9,10 +9,10 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/yerbolat/emotionsense/internal/apperror"
-	"github.com/yerbolat/emotionsense/internal/domain"
-	"github.com/yerbolat/emotionsense/internal/dto"
-	"github.com/yerbolat/emotionsense/internal/repository/redis"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/apperror"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/dto"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/repository/redis"
 )
 
 const (

@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/yerbolat/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
 )
 
 func seedDone(t *testing.T, repo *memAnalyses, userID uuid.UUID, emotion string) {

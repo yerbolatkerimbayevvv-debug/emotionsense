@@ -16,9 +16,9 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/status"
 
-	emotionv1 "github.com/yerbolat/emotionsense/gen/emotion/v1"
-	"github.com/yerbolat/emotionsense/internal/config"
-	"github.com/yerbolat/emotionsense/internal/domain"
+	emotionv1 "github.com/yerbolatkerimbayevvv-debug/emotionsense/gen/emotion/v1"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/config"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
 )
 
 // Result — результат инференса в терминах домена.

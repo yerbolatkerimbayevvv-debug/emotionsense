@@ -1,4 +1,4 @@
-module github.com/yerbolat/emotionsense
+module github.com/yerbolatkerimbayevvv-debug/emotionsense
 
 go 1.24
 

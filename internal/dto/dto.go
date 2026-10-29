@@ -7,7 +7,7 @@ package dto
 import (
 	"time"
 
-	"github.com/yerbolat/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
 )
 
 // --- Auth ---

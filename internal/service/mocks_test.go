@@ -7,10 +7,10 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/yerbolat/emotionsense/internal/domain"
-	"github.com/yerbolat/emotionsense/internal/mlclient"
-	"github.com/yerbolat/emotionsense/internal/repository/postgres"
-	"github.com/yerbolat/emotionsense/internal/repository/redis"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/mlclient"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/repository/postgres"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/repository/redis"
 )
 
 // Ручные in-memory моки. Они проще генерируемых и показывают,

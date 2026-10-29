@@ -9,7 +9,7 @@
 
 Выпускной проект курса **Golang Developer** (BITLAB Academy).
 
-[![CI](https://github.com/yerbolat/emotionsense/actions/workflows/ci.yml/badge.svg)](https://github.com/yerbolat/emotionsense/actions/workflows/ci.yml)
+[![CI](https://github.com/yerbolatkerimbayevvv-debug/emotionsense/actions/workflows/ci.yml/badge.svg)](https://github.com/yerbolatkerimbayevvv-debug/emotionsense/actions/workflows/ci.yml)
 
 ---
 
@@ -80,7 +80,7 @@
 (скачиваются TensorFlow и веса модели).
 
 ```bash
-git clone https://github.com/yerbolat/emotionsense.git
+git clone https://github.com/yerbolatkerimbayevvv-debug/emotionsense.git
 cd emotionsense
 make up            # поднимает api, 2 воркера, ml, postgres, redis, minio, kafka
 make logs          # смотреть логи

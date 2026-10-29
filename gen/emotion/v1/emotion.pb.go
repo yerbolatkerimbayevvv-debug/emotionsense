@@ -305,7 +305,7 @@ const file_emotion_v1_emotion_proto_rawDesc = "" +
 	"\x05model\x18\x02 \x01(\tR\x05model2\x95\x01\n" +
 	"\x0eEmotionService\x12B\n" +
 	"\aAnalyze\x12\x1a.emotion.v1.AnalyzeRequest\x1a\x1b.emotion.v1.AnalyzeResponse\x12?\n" +
-	"\x06Health\x12\x19.emotion.v1.HealthRequest\x1a\x1a.emotion.v1.HealthResponseB;Z9github.com/yerbolat/emotionsense/gen/emotion/v1;emotionv1b\x06proto3"
+	"\x06Health\x12\x19.emotion.v1.HealthRequest\x1a\x1a.emotion.v1.HealthResponseB;Z9github.com/yerbolatkerimbayevvv-debug/emotionsense/gen/emotion/v1;emotionv1b\x06proto3"
 
 var (
 	file_emotion_v1_emotion_proto_rawDescOnce sync.Once

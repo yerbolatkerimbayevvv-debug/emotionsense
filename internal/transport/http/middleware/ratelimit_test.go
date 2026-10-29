@@ -11,7 +11,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/yerbolat/emotionsense/internal/apperror"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/apperror"
 )
 
 type countingLimiter struct {

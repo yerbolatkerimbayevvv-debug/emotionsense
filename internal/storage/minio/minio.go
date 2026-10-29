@@ -15,7 +15,7 @@ import (
 	mc "github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 
-	"github.com/yerbolat/emotionsense/internal/config"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/config"
 )
 
 // Storage — обёртка над minio-go для одного бакета.

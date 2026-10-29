@@ -18,13 +18,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/yerbolat/emotionsense/internal/apperror"
-	"github.com/yerbolat/emotionsense/internal/config"
-	"github.com/yerbolat/emotionsense/internal/domain"
-	"github.com/yerbolat/emotionsense/internal/dto"
-	httptransport "github.com/yerbolat/emotionsense/internal/transport/http"
-	"github.com/yerbolat/emotionsense/internal/transport/http/handler"
-	"github.com/yerbolat/emotionsense/pkg/jwt"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/apperror"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/config"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/domain"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/dto"
+	httptransport "github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/transport/http"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/internal/transport/http/handler"
+	"github.com/yerbolatkerimbayevvv-debug/emotionsense/pkg/jwt"
 )
 
 // --- стабы сервисов ---

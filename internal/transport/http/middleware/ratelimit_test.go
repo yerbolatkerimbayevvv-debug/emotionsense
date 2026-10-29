@@ -15,9 +15,8 @@ import (
 )
 
 type countingLimiter struct {
-	limit int
-	n     map[string]int64
-	err   error
+	n   map[string]int64
+	err error
 }
 
 func (l *countingLimiter) Allow(_ context.Context, key string, limit int, _ time.Duration) (bool, int64, error) {

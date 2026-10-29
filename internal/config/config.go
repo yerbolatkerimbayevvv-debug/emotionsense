@@ -120,7 +120,7 @@ func Load() (*Config, error) {
 		},
 		Postgres: Postgres{
 			DSN:            getenv("POSTGRES_DSN", "postgres://emotion:emotion@localhost:5432/emotionsense?sslmode=disable"),
-			MaxConns:       int32(getint("POSTGRES_MAX_CONNS", 10)),
+			MaxConns:       int32(min(getint("POSTGRES_MAX_CONNS", 10), 1000)), //nolint:gosec // ограничено сверху
 			MigrateOnStart: getbool("POSTGRES_MIGRATE_ON_START", true),
 			ConnectTimeout: getdur("POSTGRES_CONNECT_TIMEOUT", 10*time.Second),
 		},

@@ -265,7 +265,7 @@ func (m *memAnalyses) UserEmotionStats(_ context.Context, userID uuid.UUID, sinc
 			total++
 		}
 	}
-	var out []domain.EmotionStat
+	out := make([]domain.EmotionStat, 0, len(counts))
 	for e, n := range counts {
 		out = append(out, domain.EmotionStat{Emotion: e, Count: n, Share: float64(n) / float64(total)})
 	}
@@ -283,7 +283,7 @@ func (m *memAnalyses) GlobalEmotionStats(ctx context.Context, since time.Time) (
 			total++
 		}
 	}
-	var out []domain.EmotionStat
+	out := make([]domain.EmotionStat, 0, len(counts))
 	for e, n := range counts {
 		out = append(out, domain.EmotionStat{Emotion: e, Count: n, Share: float64(n) / float64(total)})
 	}
